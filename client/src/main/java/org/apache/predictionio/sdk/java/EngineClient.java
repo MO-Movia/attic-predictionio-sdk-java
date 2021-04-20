@@ -20,7 +20,7 @@ package org.apache.predictionio.sdk.java;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.ning.http.client.RequestBuilder;
+import org.asynchttpclient.RequestBuilder;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;

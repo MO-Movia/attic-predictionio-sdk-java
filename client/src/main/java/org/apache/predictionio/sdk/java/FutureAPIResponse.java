@@ -18,7 +18,7 @@
 package org.apache.predictionio.sdk.java;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.ning.http.client.extra.ListenableFutureAdapter;
+import org.asynchttpclient.extras.guava.ListenableFutureAdapter;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
@@ -35,8 +35,9 @@ public class FutureAPIResponse implements ListenableFuture<APIResponse> {
 
   private ListenableFuture<APIResponse> apiResponse;
 
-  public FutureAPIResponse(com.ning.http.client.ListenableFuture<APIResponse> apiResponse) {
+  public FutureAPIResponse(org.asynchttpclient.ListenableFuture<APIResponse> apiResponse) {
     this.apiResponse = ListenableFutureAdapter.asGuavaFuture(apiResponse);
+    //this.apiResponse = apiResponse;
   }
 
   // implements ListenableFuture<APIResponse>
