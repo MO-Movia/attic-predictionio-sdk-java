@@ -19,7 +19,7 @@ limitations under the License.
   <parent>
     <groupId>org.apache.predictionio</groupId>
     <artifactId>predictionio-sdk-java</artifactId>
-    <version>0.14-MO</version>
+    <version>0.14-MO-SNAPSHOT</version>
   </parent>
 
   <artifactId>predictionio-sdk-java-client</artifactId>

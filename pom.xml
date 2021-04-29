@@ -19,7 +19,7 @@ limitations under the License.
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.predictionio</groupId>
   <artifactId>predictionio-sdk-java</artifactId>
-  <version>0.14-MO</version>
+  <version>0.14-MO-SNAPSHOT</version>
   <url>http://predictionio.apache.org</url>
   <packaging>pom</packaging>
   <name>Apache PredictionIO Java SDK</name>
@@ -120,4 +120,17 @@ limitations under the License.
       </plugin>
     </plugins>
   </build>
+  
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>Modus Nexus Releases Repo</name>
+      <url>https://portal.modusoperandi.com/nexus/repository/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Modus Nexus Snapshots Repo</name>
+      <url>https://portal.modusoperandi.com/nexus/repository/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
