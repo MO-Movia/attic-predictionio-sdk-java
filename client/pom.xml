@@ -30,6 +30,7 @@ limitations under the License.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <async-http-client.version>2.12.3</async-http-client.version>
+    <netty.version>4.1.63.Final</netty.version>
   </properties>
 
   <dependencies>
@@ -42,6 +43,11 @@ limitations under the License.
       <groupId>org.asynchttpclient</groupId>
       <artifactId>async-http-client-extras-guava</artifactId>
       <version>${async-http-client.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>${netty.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
