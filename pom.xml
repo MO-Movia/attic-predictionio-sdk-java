@@ -32,9 +32,9 @@ limitations under the License.
   </parent>
 
   <scm>
-    <connection>scm:git:https://github.com/apache/predictionio-sdk-java</connection>
-    <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/predictionio-sdk-java.git</developerConnection>
-    <url>https://github.com/apache/predictionio-sdk-java</url>
+    <connection>scm:git:https://github.com/MO-Movia/predictionio-sdk-java.git</connection>
+    <developerConnection>scm:git:https://github.com/MO-Movia/predictionio-sdk-java.git</developerConnection>
+    <url>https://github.com/MO-Movia/predictionio-sdk-java</url>
     <tag>HEAD</tag>
   </scm>
 
