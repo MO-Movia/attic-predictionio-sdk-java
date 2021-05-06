@@ -18,7 +18,7 @@ limitations under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.predictionio.samples</groupId>
     <artifactId>quickstart-import</artifactId>
-    <version>0.13.0</version>
+    <version>0.14-MO</version>
     <packaging>jar</packaging>
     <name>PredictionIO Java SDK Examples: Quickstart Import</name>
 
@@ -26,7 +26,7 @@ limitations under the License.
         <dependency>
             <groupId>org.apache.predictionio</groupId>
             <artifactId>predictionio-sdk-java-client</artifactId>
-            <version>0.13.0</version>
+            <version>0.14-MO</version>
         </dependency>
     </dependencies>
 

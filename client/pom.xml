@@ -19,7 +19,7 @@ limitations under the License.
   <parent>
     <groupId>org.apache.predictionio</groupId>
     <artifactId>predictionio-sdk-java</artifactId>
-    <version>0.13.1-SNAPSHOT</version>
+    <version>0.14-MO</version>
   </parent>
 
   <artifactId>predictionio-sdk-java-client</artifactId>
@@ -29,13 +29,31 @@ limitations under the License.
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <async-http-client.version>2.12.3</async-http-client.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-bom</artifactId>
+        <version>4.1.63.Final</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>com.ning</groupId>
+      <groupId>org.asynchttpclient</groupId>
       <artifactId>async-http-client</artifactId>
-      <version>1.9.33</version>
+      <version>${async-http-client.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.asynchttpclient</groupId>
+      <artifactId>async-http-client-extras-guava</artifactId>
+      <version>${async-http-client.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>

@@ -19,7 +19,7 @@ limitations under the License.
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.predictionio</groupId>
   <artifactId>predictionio-sdk-java</artifactId>
-  <version>0.13.1-SNAPSHOT</version>
+  <version>0.14-MO</version>
   <url>http://predictionio.apache.org</url>
   <packaging>pom</packaging>
   <name>Apache PredictionIO Java SDK</name>
@@ -32,9 +32,9 @@ limitations under the License.
   </parent>
 
   <scm>
-    <connection>scm:git:https://github.com/apache/predictionio-sdk-java</connection>
-    <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/predictionio-sdk-java.git</developerConnection>
-    <url>https://github.com/apache/predictionio-sdk-java</url>
+    <connection>scm:git:https://github.com/MO-Movia/predictionio-sdk-java.git</connection>
+    <developerConnection>scm:git:https://github.com/MO-Movia/predictionio-sdk-java.git</developerConnection>
+    <url>https://github.com/MO-Movia/predictionio-sdk-java</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -42,7 +42,7 @@ limitations under the License.
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>18.0</version>
+      <version>30.0-jre</version>
     </dependency>
   </dependencies>
 
@@ -120,4 +120,17 @@ limitations under the License.
       </plugin>
     </plugins>
   </build>
+  
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>Modus Nexus Releases Repo</name>
+      <url>https://portal.modusoperandi.com/nexus/repository/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Modus Nexus Snapshots Repo</name>
+      <url>https://portal.modusoperandi.com/nexus/repository/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

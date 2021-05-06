@@ -17,19 +17,23 @@
 
 package org.apache.predictionio.sdk.java;
 
-import com.google.gson.JsonParser;
-import com.ning.http.client.AsyncHandler;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.AsyncHttpClientConfig;
-import com.ning.http.client.HttpResponseBodyPart;
-import com.ning.http.client.HttpResponseHeaders;
-import com.ning.http.client.HttpResponseStatus;
-import com.ning.http.client.Response;
-import com.ning.http.client.extra.ThrottleRequestFilter;
-import com.ning.http.client.providers.netty.NettyAsyncHttpProvider;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+
+import com.google.gson.JsonParser;
+
+import org.asynchttpclient.AsyncHandler;
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.AsyncHttpClientConfig;
+import org.asynchttpclient.DefaultAsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClientConfig;
+import org.asynchttpclient.HttpResponseBodyPart;
+import org.asynchttpclient.HttpResponseStatus;
+import org.asynchttpclient.Response;
+import org.asynchttpclient.filter.ThrottleRequestFilter;
+
+import io.netty.handler.codec.http.HttpHeaders;
 
 /**
  * BaseClient contains code common to both {@link EventClient} and {@link EngineClient}.
@@ -87,15 +91,13 @@ public abstract class BaseClient implements Closeable {
   public BaseClient(String apiUrl, int threadLimit, int queueSize, int timeout) {
     this.apiUrl = apiUrl;
     // Async HTTP client config
-    AsyncHttpClientConfig config = (new AsyncHttpClientConfig.Builder())
-        .setAllowPoolingConnections(true)
-        .setAllowPoolingSslConnections(true)
+    AsyncHttpClientConfig config = (new DefaultAsyncHttpClientConfig.Builder())
         .addRequestFilter(new ThrottleRequestFilter(threadLimit))
         .setMaxConnectionsPerHost(threadLimit)
         .setRequestTimeout(timeout * 1000)
-        .setIOThreadMultiplier(threadLimit)
+        .setIoThreadsCount(threadLimit)
         .build();
-    this.client = new AsyncHttpClient(new NettyAsyncHttpProvider(config), config);
+    this.client = new DefaultAsyncHttpClient(config);
   }
 
   /**
@@ -103,7 +105,7 @@ public abstract class BaseClient implements Closeable {
    * client after use.
    */
   @Override
-  public void close() {
+  public void close() throws IOException {
     client.close();
   }
 
@@ -114,19 +116,19 @@ public abstract class BaseClient implements Closeable {
       public void onThrowable(Throwable throwable) {
       }
 
-      public STATE onBodyPartReceived(HttpResponseBodyPart content) throws Exception {
+      public State onBodyPartReceived(HttpResponseBodyPart content) throws Exception {
         builder.accumulate(content);
-        return STATE.CONTINUE;
+        return State.CONTINUE;
       }
 
-      public STATE onStatusReceived(HttpResponseStatus status) throws Exception {
+      public State onStatusReceived(HttpResponseStatus status) throws Exception {
         builder.accumulate(status);
-        return STATE.CONTINUE;
+        return State.CONTINUE;
       }
 
-      public STATE onHeadersReceived(HttpResponseHeaders headers) throws Exception {
+      public State onHeadersReceived(HttpHeaders headers) throws Exception {
         builder.accumulate(headers);
-        return STATE.CONTINUE;
+        return State.CONTINUE;
       }
 
       public APIResponse onCompleted() throws Exception {
