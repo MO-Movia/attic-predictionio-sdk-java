@@ -17,13 +17,15 @@
 
 package org.apache.predictionio.sdk.java;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import org.asynchttpclient.RequestBuilder;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+
+import org.asynchttpclient.RequestBuilder;
 import org.joda.time.DateTime;
 
 /**
@@ -106,7 +108,6 @@ public class EngineClient extends BaseClient {
     String requestJsonString = gson.toJson(query);
     builder.setBody(requestJsonString);
     builder.setHeader("Content-Type", "application/json");
-    builder.setHeader("Content-Length", "" + requestJsonString.length());
     return new FutureAPIResponse(client.executeRequest(builder.build(), getHandler()));
   }
 
