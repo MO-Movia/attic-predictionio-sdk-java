@@ -18,6 +18,7 @@
 package org.apache.predictionio.sdk.java;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -108,6 +109,7 @@ public class EngineClient extends BaseClient {
     String requestJsonString = gson.toJson(query);
     builder.setBody(requestJsonString);
     builder.setHeader("Content-Type", "application/json");
+    builder.setHeader("Content-Length", "" + requestJsonString.getBytes(StandardCharsets.UTF_8).length);
     return new FutureAPIResponse(client.executeRequest(builder.build(), getHandler()));
   }
 
